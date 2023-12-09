@@ -72,7 +72,7 @@ internal class Day05 : PuzzleDayBase
         Presentation.ShowAnswer(minLocation);
     }
 
-    private List<ValueRange> GetDestinationRanges(List<MappedRange> mappedRanges)
+    private static List<ValueRange> GetDestinationRanges(List<MappedRange> mappedRanges)
     {
         List<ValueRange> ranges = new();
         foreach (var mappedRange in mappedRanges)

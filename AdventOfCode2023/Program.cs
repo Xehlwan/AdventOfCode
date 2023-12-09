@@ -9,6 +9,7 @@ Dictionary<int, Lazy<PuzzleDayBase>> puzzles = new()
     {4, new(() => new Day04()) },
     {5, new(() => new Day05()) },
     {6, new(() => new Day06()) },
+    {7, new(() => new Day07()) },
 };
 
 Presentation.ShowDaySelection(2023, puzzles);

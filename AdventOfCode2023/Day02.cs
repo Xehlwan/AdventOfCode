@@ -49,7 +49,7 @@ namespace AdventOfCode2023
             }
         }
 
-        private Game ParseGame(string line)
+        private static Game ParseGame(string line)
         {
             string[] sections = line.Split(new[] { ':', ';' }, StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries);
             Game game = new();

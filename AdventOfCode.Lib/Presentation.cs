@@ -28,11 +28,18 @@ public static class Presentation
     public static void ShowAnswer(int answer) => ShowAnswer(answer.ToString());
     public static void ShowAnswer(long answer) => ShowAnswer(answer.ToString());
 
-    public static void ShowAnswer(string answer) => Console.WriteLine($"[ANSWER: {answer}]");
+    public static void ShowAnswer(string answer)
+    {
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine($"[ANSWER: {answer}]");
+        Console.ResetColor();
+    }
 
     private static void ShowTitle(int day, char part)
     {
+        Console.ForegroundColor = ConsoleColor.Blue;
         Console.Write($"DAY {day:D2} [{part}]\n\nResult:\n");
+        Console.ResetColor();
     }
 
     public static void ShowDaySelection(int year, Dictionary<int, Lazy<PuzzleDayBase>> puzzles)
@@ -62,4 +69,8 @@ public static class Presentation
 
         return false;
     }
+
+    public static void Log(string str) => Console.WriteLine(str);
+
+    public static void Log(object obj) => Console.WriteLine(obj);
 }

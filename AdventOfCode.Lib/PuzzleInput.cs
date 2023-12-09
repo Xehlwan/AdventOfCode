@@ -8,14 +8,14 @@ namespace AdventOfCode.Lib;
 
 public class PuzzleInput
 {
-    private string inputData;
+    private string _raw;
 
-    public string Raw => inputData;
+    public string Raw => _raw;
 
     public PuzzleInput(string inputId, string inputDirectory = "Input")
     {
         string path = Path.Combine(AppContext.BaseDirectory, inputDirectory, inputId + ".txt");
-        inputData = File.ReadAllText(path);
+        _raw = File.ReadAllText(path);
     }
 
     public PuzzleInput(int day, string inputDirectory = "Input") : this(day.ToString("D2"), inputDirectory)
@@ -37,7 +37,7 @@ public class PuzzleInput
         return list;
     }
 
-    public StringReader GetReader() => new StringReader(inputData);
+    public StringReader GetReader() => new StringReader(_raw);
 
     public List<string> GetLines()
     {
