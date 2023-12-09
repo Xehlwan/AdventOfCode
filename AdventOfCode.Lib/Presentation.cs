@@ -26,6 +26,7 @@ public static class Presentation
     }
 
     public static void ShowAnswer(int answer) => ShowAnswer(answer.ToString());
+    public static void ShowAnswer(long answer) => ShowAnswer(answer.ToString());
 
     public static void ShowAnswer(string answer) => Console.WriteLine($"[ANSWER: {answer}]");
 
@@ -34,7 +35,7 @@ public static class Presentation
         Console.Write($"DAY {day:D2} [{part}]\n\nResult:\n");
     }
 
-    public static void ShowDaySelection(int year, Dictionary<int, PuzzleDayBase> puzzles)
+    public static void ShowDaySelection(int year, Dictionary<int, Lazy<PuzzleDayBase>> puzzles)
     {
         bool validInput = false;
         do
@@ -50,12 +51,12 @@ public static class Presentation
         } while (!validInput);
     }
 
-    private static bool TryGetDay(string? input, Dictionary<int, PuzzleDayBase> puzzles)
+    private static bool TryGetDay(string? input, Dictionary<int, Lazy<PuzzleDayBase>> puzzles)
     {
         bool valid = int.TryParse(input, out int day);
         if (valid && puzzles.TryGetValue(day, out var puzzle))
         {
-            puzzle.Run();
+            puzzle.Value.Run();
             return true;
         }
 
